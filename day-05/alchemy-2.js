@@ -5,9 +5,8 @@ const polymer = fs.readFileSync('./input.txt', 'utf8');
 function purge(polymer, purgeUnit) {
   let newPolymer = '';
 
-  polymer.split('').forEach(unit => {
+  for (const unit of polymer)
     if (unit.toUpperCase() !== purgeUnit) newPolymer += unit;
-  });
 
   return newPolymer;
 }
@@ -30,7 +29,7 @@ function react(polymer) {
   return { polymer: newPolymer, reacted };
 }
 
-for (i = 0; i < 26; ++i) {
+for (let i = 0; i < 26; ++i) {
   const unit = String.fromCharCode(i + 65);
   const polymerToTest = purge(polymer, unit);
   let result = react(polymerToTest);
