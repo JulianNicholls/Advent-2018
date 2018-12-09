@@ -26,10 +26,17 @@ function createNode() {
 }
 
 function traverse(node) {
-  return (
-    node.metadata.reduce((acc, num) => acc + num, 0) +
-    node.nodes.reduce((acc, node) => acc + traverse(node), 0)
-  );
+  if (node.nodes.length === 0)
+    return node.metadata.reduce((acc, num) => acc + num, 0);
+
+  return node.metadata.reduce((acc, meta) => {
+    if (meta !== 0) {
+      const idx = meta - 1;
+      if (idx < node.nodes.length) return acc + traverse(node.nodes[idx]);
+    }
+
+    return acc;
+  }, 0);
 }
 
 const topNode = createNode();
