@@ -23,7 +23,7 @@ function loadPlants(fn = 'input.txt') {
 function convertFromHashes(str) {
   const retval = [];
 
-  for (let ch of str) retval.push(ch === '#' ? 1 : 0);
+  for (const ch of str) retval.push(ch === '#' ? 1 : 0);
 
   return retval;
 }
@@ -48,7 +48,7 @@ function generation(plants) {
   const next = [...current];
 
   for (let idx = 2; idx < current.length - 2; ++idx) {
-    for (let rule of rules) {
+    for (const rule of rules) {
       const result = applyRule(current.slice(idx - 2, idx + 3), rule);
       if (result !== -1) {
         next[idx] = result;
@@ -61,7 +61,6 @@ function generation(plants) {
 }
 
 // Return -1 for no match, 0 for no plant, or 1 for plant
-
 function applyRule(slice, rule) {
   const { condition, result } = rule;
 
