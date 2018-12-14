@@ -14,8 +14,8 @@ function power(x, y, serial = SERIAL) {
 function powerXxY(grid, left, top, size) {
   let total = 0;
 
-  for (y = top; y < top + size; ++y) {
-    for (x = left; x < left + size; ++x) {
+  for (let y = top; y < top + size; ++y) {
+    for (let x = left; x < left + size; ++x) {
       total += grid[y][x];
     }
   }
